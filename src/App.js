@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import PropertyList from './components/PropertyList';
+import PostProperty from './components/PostProperty';
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [userType, setUserType] = useState('');
+
+    return (
+        <Router>
+            <div className="App">
+                <Switch>
+                    <Route path="/login">
+                        <Login setAuth={setIsAuthenticated} setUserType={setUserType} />
+                    </Route>
+                    <Route path="/register" component={Register} />
+                    <Route path="/properties" component={PropertyList} />
+                    <Route path="/postproperties" component={PostProperty} />
+                    <Route path="/">
+                        {isAuthenticated ? (
+                            userType === 'seller' ? (
+                                <Redirect to="/postproperties" />
+                            ) : (
+                                <Redirect to="/properties" />
+                            )
+                        ) : (
+                            <Redirect to="/login" />
+                        )}
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
