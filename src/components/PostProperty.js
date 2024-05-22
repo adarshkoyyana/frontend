@@ -26,7 +26,7 @@ function PostProperty() {
 
     const fetchProperties = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/properties');
+            const response = await axios.get('https://backend-k16t.onrender.com/properties');
             setProperties(response.data);
         } catch (error) {
             console.error('Error fetching properties:', error);
@@ -71,11 +71,11 @@ function PostProperty() {
             };
 
             if (editingProperty) {
-                await axios.put(`http://localhost:5000/properties/${editingProperty.id}`, data, config);
+                await axios.put(`https://backend-k16t.onrender.com/properties/${editingProperty.id}`, data, config);
                 toast.success('Property updated successfully!');
                 setEditingProperty(null);
             } else {
-                await axios.post('http://localhost:5000/properties', data, config);
+                await axios.post('https://backend-k16t.onrender.com/properties', data, config);
                 toast.success('Property added successfully!');
             }
 
@@ -116,7 +116,7 @@ function PostProperty() {
     const handleDelete = async (propertyId) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`http://localhost:5000/properties/${propertyId}`, {
+            await axios.delete(`https://backend-k16t.onrender.com/properties/${propertyId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
