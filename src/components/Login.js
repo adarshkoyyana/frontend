@@ -15,7 +15,7 @@ function Login({ setAuth, setUserType }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/login', { email, password });
+            const response = await axios.post('https://backend-k16t.onrender.com/login', { email, password });
             console.log(response.data.token);
 
             localStorage.setItem('token', response.data.token);
