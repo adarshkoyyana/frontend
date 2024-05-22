@@ -183,7 +183,7 @@ function PostProperty() {
                             <p className="card-text">Bathrooms: {property.num_bathrooms}</p>
                             <p className="card-text">Hospitals Nearby: {property.hospitals_nearby ? 'Yes' : 'No'}</p>
                             <p className="card-text">Colleges Nearby: {property.colleges_nearby ? 'Yes' : 'No'}</p>
-                            {property.image_url && <img src={`http://localhost:5000${property.image_url}`} alt="Property" className="img-thumbnail mb-3" />}
+                            {property.image_url && <img src={`https://backend-k16t.onrender.com${property.image_url}`} alt="Property" className="img-thumbnail mb-3" />}
                             <div className="d-flex justify-content-between">
                                 <button className="btn btn-warning mr-2" onClick={() => handleEdit(property)}>Edit</button>
                                 <button className="btn btn-danger" onClick={() => handleDelete(property.id)}>Delete</button>
