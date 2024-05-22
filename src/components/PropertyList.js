@@ -117,7 +117,7 @@ function PropertyList() {
                 {currentProperties.map(property => (
                     <div key={property.id} className="property-card">
                         <h3>{property.place}</h3>
-                        <img src={`http://localhost:5000${property.image_url}`} alt="Property" className="property-image" />
+                        <img src={`https://backend-k16t.onrender.com${property.image_url}`} alt="Property" className="property-image" />
                         <div className="property-details">
                             <p><strong>Area:</strong> {property.area} sq ft</p>
                             <p><strong>Bedrooms:</strong> {property.num_bedrooms}</p>
