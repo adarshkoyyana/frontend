@@ -17,7 +17,7 @@ function PropertyList() {
     useEffect(() => {
         const fetchProperties = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/properties');
+                const response = await axios.get('https://backend-k16t.onrender.com/properties');
                 const propertiesWithLikes = response.data.map(property => ({ ...property, likes: 0 }));
                 setProperties(propertiesWithLikes);
                 setFilteredProperties(propertiesWithLikes);
@@ -32,7 +32,7 @@ function PropertyList() {
     const fetchSellerDetails = async (sellerId, propertyId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`http://localhost:5000/seller/${sellerId}`, {
+            const response = await axios.get(`https://backend-k16t.onrender.com/seller/${sellerId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -47,7 +47,7 @@ function PropertyList() {
     const handleInterestedClick = async (propertyId, sellerId) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.post(`http://localhost:5000/properties/${propertyId}/interest`, {}, {
+            await axios.post(`https://backend-k16t.onrender.com/properties/${propertyId}/interest`, {}, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
