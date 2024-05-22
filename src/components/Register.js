@@ -25,7 +25,7 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/register', formData);
+            const response = await axios.post('https://backend-k16t.onrender.com/register', formData);
             console.log(response.data);
             toast.success('User registered successfully');
             setTimeout(() => {
